@@ -1,0 +1,11 @@
+<%= render partial: '/attachments/first_image_attachment', locals: {image_attachment: article.first_image_attachment } if article.first_image_attachment %>
+<% if controller_name == 'articles' && action_name == 'index' %>
+  <div class="text-justify clearfix">
+  <p>
+  <%= article.content.length > 800 ? sanitize_truncate(article.content) : sanitize_full(article.content) %>
+  </div>
+<% else %>
+  <div class="text-justify clearfix">
+  <%= sanitize_full article.content %>
+  </div>
+<% end %>

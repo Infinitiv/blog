@@ -1,0 +1,24 @@
+<%= render partial: 'title' %>
+<section class="panel">
+  <% if @article.published %>
+    <%= render partial: 'twitter_card' %>
+    <%= render partial: 'vk_card' %>
+    <%= render partial: 'article', locals: { article: @article } %>
+  <% else %>
+    <h1>Статья еще не опубликована или снята с публикации</h1>
+  <% end %>
+  <%  if current_user %>
+  <h2>Прикрепить новый файл</h2>
+    <%= form_for @attachment, url: article_attachments_path(@article) do |f| %>
+      <div class="filefild">
+	<%= f.select :id, options_for_select = @attachments.collect {|p| [p.title, p.id] }, {:include_blank => ''} %>
+      </div>
+      <div class="filefild">
+	<%= f.file_field :file %>
+      </div>
+      <div class="actions">
+	<%= f.submit 'Прикрепить файл' %>
+      </div>
+    <% end %>
+  <% end %>
+</section>

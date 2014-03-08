@@ -1,0 +1,21 @@
+<div class="subscript">
+  <% if controller_name == 'articles' && action_name == 'show' %>
+  <ul class="inline-list left">
+    <li><%= link_to 'http://markovnin.net/feed.atom', target: 'blank' do %>
+      <%= image_tag('application-rss+xml.png', title: 'Подписаться на RSS', size: '16x16') %>
+    <% end %></li>
+    <li><%= link_to 'https://twitter.com/share?text=' + (content_for?(:title) ? yield(:title) : "Бложик") + '&?url=' + article_url(article) + '&?via=@v_markovnin', target: 'blank' do %>
+      <%= image_tag('twitter_logo_blue.png', title: "Поделиться в Twitter", size: '16x16') %>
+    <% end %></li>
+    <li><%= link_to 'http://vk.com/share.php?url=' + article_url(article), target: 'blank' do %>
+      <%= image_tag('vk16.png', title: 'Поделиться Вконтакте', size: '16x16') %>
+    <% end %></li>
+    <li><%= link_to 'https://plus.google.com/share?url=' + article_url(article), target: 'blank' do %>
+      <%= image_tag('gplus-16.png', title: 'Поделиться в Google+', size: '16x16') %>
+    <% end %></li>
+  </ul>
+  <%= render partial: '/attachments/image_attachments', locals: { article: article } if @image_attachments.count > 0 %>
+  <%= render partial: '/attachments/not_image_attachments', locals: { article: article } if @not_image_attachments.count > 0 %>
+<% else %>
+  <hr />
+<% end %>

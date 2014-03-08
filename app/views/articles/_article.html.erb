@@ -1,0 +1,5 @@
+<article class="clearfix <%= 'pink' unless article.published %>">
+  <%= render partial: 'article_header', locals: { article: article } %>
+  <%= render partial: 'article_content', locals: { article: article } %>
+  <%= render partial: 'article_footer', locals: { article: article } %>
+</article>

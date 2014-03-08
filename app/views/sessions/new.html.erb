@@ -1,0 +1,22 @@
+<div>
+<%= form_tag login_path, :class => 'form-horizontal' do %>
+  <fieldset>
+    <legend>Вход в систему</legend>
+  <div class="control-group">
+    <%= label_tag :login, 'Имя', :class => 'control-label' %>
+    <div class="controls">
+      <%= text_field_tag :login, params[:login], :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= label_tag :password, 'Пароль', :class => 'control-label' %>
+    <div class="controls">
+      <%= password_field_tag :password, params[:password], :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="form-actions">
+    <%= submit_tag 'Войти', :class => 'btn btn-primary' %>
+  </div>
+  </fieldset>
+<% end %>
+</div>

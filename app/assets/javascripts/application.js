@@ -13,7 +13,13 @@
 //= require jquery
 //= require jquery_ujs
 //= require foundation
-//= require turbolinks
-//= require_tree .
-
+//= require foundation/foundation
+//= require foundation/foundation.accordion
+//= require foundation/foundation.clearing
+//= require foundation/foundation.dropdown
+//= require foundation/foundation.orbit
+//= require foundation/foundation.reveal
+//= require foundation/foundation.topbar
+Foundation.set_namespace = function() {};
 $(function(){ $(document).foundation(); });
+var CKEDITOR_BASEPATH = '/assets/ckeditor/'

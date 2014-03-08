@@ -5,8 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <title><%= content_for?(:title) ? yield(:title) : "foundation-rails" %></title>
-
+    <%= yield(:twitter_card) if content_for?(:twitter_card) %>
+    <%= yield(:vk_card) if content_for?(:vk_card) %>
+    <%= favicon_link_tag 'favicon.ico' %>
+    <%= auto_discovery_link_tag(:atom, root_url + 'feed.atom', {title: "ИвГМА"}) %>
     <%= stylesheet_link_tag    "application" %>
+    <%= stylesheet_link_tag    "http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700" %>
     <%= javascript_include_tag "vendor/modernizr" %>
     <%= csrf_meta_tags %>
   </head>
@@ -15,5 +19,9 @@
 
     <%= yield %>
     <%= javascript_include_tag "application" %>
+    <% if action_name == 'edit' || action_name == 'new' || action_name == 'create' %>
+      <%= javascript_include_tag "ckeditor/ckeditor" %>
+      <%= javascript_include_tag "ckeditor_init" %>
+    <% end %>
   </body>
 </html>

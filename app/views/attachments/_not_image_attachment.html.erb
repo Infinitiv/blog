@@ -1,0 +1,36 @@
+<li class='thumb'>
+<div class="wrap">
+  <% if @moderator_permission || current_user == @article.user %>
+    <%= link_to edit_attachment_path(not_image_attachment) + "?article_id=#{@article.id}" do %>
+      <i class="fi-refresh" style="right: 20px;"></i>
+    <% end %>
+    <%= link_to attachment_path(not_image_attachment) + "?article_id=#{@article.id}", method: :delete, data: { confirm: 'Are you sure?' } do %>
+      <i class="fi-x"></i>
+    <% end %>
+  <% end %>
+</div>
+<%= link_to attachment_path(not_image_attachment), target: '_blank' do %>
+  <% case %>
+  <% when not_image_attachment.mime_type =~ /pdf/ %>
+  <%= image_tag("application-pdf.png", size: '32x32', class: "left") %>
+  <% when not_image_attachment.mime_type =~ /word/ %>
+  <%= image_tag("application-msword.png", size: '32x32', class: "left") %>
+  <% when not_image_attachment.mime_type =~ /ms-excel|spreadsheet/ %>
+  <%= image_tag("application-msexcel.png", size: '32x32', class: "left") %>
+  <% else %>
+  <%= image_tag("unknown.png", size: '32x32', class: "left") %>
+  <% end %>
+  <div class="thumb-title">
+  <%= not_image_attachment.title_sen_dot %>
+  </div>
+  <div class="subscript">
+    <% case not_image_attachment.updated_at.to_date %>
+    <% when Time.now.to_date %>
+      сегодня в 
+	<%= time_tag not_image_attachment.updated_at, :pubdate => true, :format => '%R' %>
+      <% else %>
+	<%= time_tag not_image_attachment.updated_at, :pubdate => true, :format => '%e.%m.%Y %R' %>
+    <% end %>
+  </div>
+<% end %>
+</li>

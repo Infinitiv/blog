@@ -1,0 +1,36 @@
+<header>
+<div class="left">
+  <% if current_user %>
+    <%= link_to published_toggle_article_path(article), title: (article.published ? 'Снять с публикации' : 'Опубликовать'), method: :put do %>
+      <i class="fi-eye"></i>
+    <% end %>
+    <%= link_to up_article_path(article), title: 'Поднять наверх', method: :put do %>
+      <i class="fi-arrow-up"></i>
+    <% end %>
+    <%= link_to edit_article_path(article), title: 'Редактировать статью' do %>
+      <i class="fi-page-edit"></i>
+    <% end %>
+    <%= link_to article, title: 'Удалить статью', method: :delete, data: { confirm: 'Are you sure?' } do %>
+      <i class="fi-x"></i>
+    <% end %>
+  <% end %>
+</div>
+<div class="superscript">
+  <% case article.updated_at.to_date %>
+  <% when Time.now.to_date %>
+    сегодня в 
+      <%= time_tag article.updated_at, :pubdate => true, :format => '%R' %>
+    <% else %>
+      <%= time_tag article.updated_at, :pubdate => true, :format => '%e.%m.%Y %R' %>
+  <% end %>
+</div>
+<% if controller.controller_name == 'articles' && controller.action_name == 'show' %>
+  <h1>
+    <%= article.title %>
+  </h1>  
+<% else %>
+  <h1 class="index">
+    <%= link_to article.title, article %>
+  </h1>
+<% end %>
+</header>

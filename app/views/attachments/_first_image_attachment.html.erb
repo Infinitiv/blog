@@ -1,0 +1,12 @@
+<div class="wrap th left">
+  <% if @moderator_permission %>
+    <%= link_to attachment_path(image_attachment), method: :delete, data: { confirm: 'Уверены?' } do %>
+      <i class="fi-x"></i>
+    <% end %>
+  <% end %>
+<%= link_to(image_tag(minify_img_path(image_attachment), size: dimension), "#", :title => image_attachment.title_sen_dot, "data-reveal-id" => "attachment_#{image_attachment.id}") %>
+</div>
+<div id="<%= "attachment_#{image_attachment.id}" %>" class="reveal-modal medium" data-reveal align="center">
+  <%= image_tag(inline_path(image_attachment)) %>
+  <a class="close-reveal-modal">&#215;</a>
+</div>
