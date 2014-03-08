@@ -1,0 +1,71 @@
+hr {
+  border: 0;
+  height: 1px;
+  background-image: -webkit-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0)); 
+  background-image: -moz-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0)); 
+  background-image: -ms-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0)); 
+  background-image: -o-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0));
+  margin: 5px;
+}
+.index {
+  text-align : left;
+  line-height: 1.2;
+  font-size: 100%
+}
+ul, ol {
+  list-style-position: inside;
+}
+.superscript, .subscript {
+  font-size : 75%;
+  line-height: normal;
+  font-style : italic;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  text-align: right;
+}
+.pink {
+  background-color: rgba(204,0,0,0.5);
+}
+.content {
+  width: 100%;
+}
+.th {
+  margin-right: 1%;
+  margin-bottom: 1%;
+}
+.thumb {
+width: 49%;
+float: left;
+margin: 0.5%;
+padding: 0;
+  height:32px;
+}
+.thumb-title {
+  font-size: 90%;
+  height: 16px;
+  overflow: hidden;
+}
+.wrap {
+  position: relative;
+}
+.wrap i {
+  position: absolute;
+  top: 0px;
+  right: 5px;
+}
+.fi-social-twitter, .fi-rss {
+  font-size: 20px;
+  vertical-align: middle;
+}
+.fi-rss {
+  color: orange;
+}
+.fi-social-twitter {
+  color: blue;
+}
+.inline-list {
+  margin-left: -0.5rem;
+}
+.inline-list > li {
+  margin-left: 0.5rem;
+}

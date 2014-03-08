@@ -5,11 +5,7 @@ class ArticlesController < ApplicationController
   # GET /articles
   # GET /articles.json
   def index
-    if current_user.nil?
       @articles = Article.includes(:attachments).order('updated_at DESC').where(published: true).limit(10)
-    else
-      @articles = Article.includes(:attachments).order('updated_at DESC').limit(10)
-    end
   end
 
   # GET /articles/1
