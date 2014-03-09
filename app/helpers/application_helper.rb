@@ -11,8 +11,8 @@ module ApplicationHelper
 	options[:elements].push('iframe')
 	options[:attributes]['iframe'] = ['width', 'height', 'src', 'frameborder', 'allowfullscreen', 'style']
 	insert_youtube(text)
-	else
-	  remove_youtube(text)
+      else
+	remove_youtube(text)
       end
     end
     Sanitize.clean(text, options).html_safe
@@ -37,6 +37,7 @@ module ApplicationHelper
   end
     
   def sanitize_truncate(text)
-    truncate(Sanitize.clean(text), :length => 300, :omission => '... ', :separator => ' ')
+    remove_youtube(text)
+    truncate(Sanitize.clean(text), :length => 500, :omission => '... ', :separator => ' ')
   end
 end

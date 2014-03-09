@@ -1,4 +1,4 @@
 <ul class="clearing-thumbs" data-clearing>
-<%= render partial: 'articles/image_attachment', collection: @image_attachments %>
+<%= render partial: 'attachments/image_attachment', collection: @image_attachments, locals: { article: article } %>
 </ul>
 <hr />

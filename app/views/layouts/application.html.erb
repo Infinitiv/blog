@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title><%= content_for?(:title) ? yield(:title) : "foundation-rails" %></title>
+    <title><%= content_for?(:title) ? yield(:title) : "Marathon & something else" %></title>
     <%= yield(:twitter_card) if content_for?(:twitter_card) %>
     <%= yield(:vk_card) if content_for?(:vk_card) %>
     <%= favicon_link_tag 'favicon.ico' %>
@@ -16,8 +16,19 @@
   </head>
 
   <body>
-
-    <%= yield %>
+    <div class="row">
+      <div class="large-12 small-12 columns">
+	<h1 class="title"><%= link_to 'Marathon & something else', root_path %></h1>
+      </div>
+    </div>
+    <div class="row">
+      <div class="large-2 columns show-for-large-up">
+text
+      </div>
+      <div class="large-10 small-12 columns panel">
+	<%= yield %>
+      </div>
+    </div>
     <%= javascript_include_tag "application" %>
     <% if action_name == 'edit' || action_name == 'new' || action_name == 'create' %>
       <%= javascript_include_tag "ckeditor/ckeditor" %>

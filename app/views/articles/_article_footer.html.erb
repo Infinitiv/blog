@@ -14,8 +14,9 @@
       <%= image_tag('gplus-16.png', title: 'Поделиться в Google+', size: '16x16') %>
     <% end %></li>
   </ul>
-  <%= render partial: '/attachments/image_attachments', locals: { article: article } if @image_attachments.count > 0 %>
-  <%= render partial: '/attachments/not_image_attachments', locals: { article: article } if @not_image_attachments.count > 0 %>
+  <hr />
+  <%= render partial: '/attachments/image_attachments', locals: { article: @article } if @image_attachments.count > 0 %>
+  <%= render partial: '/attachments/not_image_attachments', locals: { article: @article } if @not_image_attachments.count > 0 %>
 <% else %>
   <hr />
 <% end %>

@@ -8,13 +8,17 @@ Blog::Application.routes.draw do
   end
   
   resources :articles do
-    resources :attachments
+    resources :attachments do
+      member do
+	get 'minify_img', :as => :minify_img
+	get 'inline', :as => :inline
+      end
+    end
     member do
       put :published_toggle
       put :up
     end
   end
-
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

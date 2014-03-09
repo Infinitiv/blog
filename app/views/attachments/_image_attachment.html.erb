@@ -1,10 +1,10 @@
 <li>
 <div class="wrap">
-  <% if @moderator_permission || current_user == @article.user %>
-    <%= link_to image_attachment, method: :delete, data: { confirm: 'Are you sure?' } do %>
+  <% unless current_user.nil? %>
+    <%= link_to article_attachment_path(article, image_attachment), method: :delete, data: { confirm: 'Are you sure?' } do %>
     <i class="fi-x"></i>
     <% end %>
   <% end %>
-<%= link_to(image_tag(minify_img_path(image_attachment), size: '128x128'), inline_path(image_attachment), :class => 'th') %>
+<%= link_to(image_tag(minify_img_article_attachment_path(article, image_attachment), size: '128x128'), inline_article_attachment_path(article, image_attachment), :class => 'th') %>
 </div>
 </li>

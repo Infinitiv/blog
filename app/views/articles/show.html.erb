@@ -1,9 +1,9 @@
 <%= render partial: 'title' %>
-<section class="panel">
+<section>
   <% if @article.published %>
     <%= render partial: 'twitter_card' %>
     <%= render partial: 'vk_card' %>
-    <%= render partial: 'article', locals: { article: @article } %>
+    <%= render partial: 'article', locals: { article: @article, dimension: "150x150" } %>
   <% else %>
     <h1>Статья еще не опубликована или снята с публикации</h1>
   <% end %>

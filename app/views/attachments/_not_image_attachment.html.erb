@@ -1,15 +1,15 @@
 <li class='thumb'>
 <div class="wrap">
-  <% if @moderator_permission || current_user == @article.user %>
-    <%= link_to edit_attachment_path(not_image_attachment) + "?article_id=#{@article.id}" do %>
+  <% unless current_user.nil? %>
+    <%= link_to edit_article_attachment_path(article, not_image_attachment) + "?article_id=#{@article.id}" do %>
       <i class="fi-refresh" style="right: 20px;"></i>
     <% end %>
-    <%= link_to attachment_path(not_image_attachment) + "?article_id=#{@article.id}", method: :delete, data: { confirm: 'Are you sure?' } do %>
+    <%= link_to article_attachment_path(article, not_image_attachment) + "?article_id=#{@article.id}", method: :delete, data: { confirm: 'Are you sure?' } do %>
       <i class="fi-x"></i>
     <% end %>
   <% end %>
 </div>
-<%= link_to attachment_path(not_image_attachment), target: '_blank' do %>
+<%= link_to article_attachment_path(article, not_image_attachment), target: '_blank' do %>
   <% case %>
   <% when not_image_attachment.mime_type =~ /pdf/ %>
   <%= image_tag("application-pdf.png", size: '32x32', class: "left") %>

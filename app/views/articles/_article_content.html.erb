@@ -1,4 +1,4 @@
-<%= render partial: '/attachments/first_image_attachment', locals: {image_attachment: article.first_image_attachment } if article.first_image_attachment %>
+<%= render partial: '/attachments/first_image_attachment', locals: {image_attachment: article.first_image_attachment, article: article, dimension: dimension } if article.first_image_attachment %>
 <% if controller_name == 'articles' && action_name == 'index' %>
   <div class="text-justify clearfix">
   <p>
