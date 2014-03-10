@@ -1,1 +1,2 @@
+<%= will_paginate @articles, next_label: "Вперед", previous_label: 'Назад'  %>
 <%= render partial: 'article', collection: @articles, locals: { dimension: '75x75' } %>

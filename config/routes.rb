@@ -26,6 +26,9 @@ Blog::Application.routes.draw do
   # root 'welcome#index'
   root 'articles#index'
   
+  controller :articles do
+    get :feed
+  end
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

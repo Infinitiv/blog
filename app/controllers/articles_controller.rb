@@ -1,11 +1,11 @@
 class ArticlesController < ApplicationController
-  skip_before_filter :require_login, only: [:index, :show]
+  skip_before_filter :require_login, only: [:index, :show, :feed]
   before_action :set_article, only: [:show, :edit, :update, :destroy, :published_toggle, :up]
 
   # GET /articles
   # GET /articles.json
   def index
-      @articles = Article.includes(:attachments).order('updated_at DESC').where(published: true).limit(10)
+      @articles = Article.includes(:attachments).order('updated_at DESC').where(published: true).paginate(:page => params[:page])
   end
 
   # GET /articles/1
@@ -76,6 +76,14 @@ class ArticlesController < ApplicationController
   def up
     @article.update_attributes(updated_at: Time.now)
     redirect_to :back
+  end
+
+  def feed
+    @articles = Article.order('updated_at DESC').where(published: true).where("updated_at > ?", Time.now.to_date - 30)
+    
+    respond_to do |format|
+      format.atom
+    end
   end
 
   private
