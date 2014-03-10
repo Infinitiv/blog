@@ -14,6 +14,7 @@
       <%= image_tag('gplus-16.png', title: 'Поделиться в Google+', size: '16x16') %>
     <% end %></li>
   </ul>
+<%= link_to 'Vladimir Markovnin', 'https://www.google.com/+VladimirMarkovnin', rel: 'author', class: 'hide' %>
   <hr />
   <%= render partial: '/attachments/image_attachments', locals: { article: @article } if @image_attachments.count > 0 %>
   <%= render partial: '/attachments/not_image_attachments', locals: { article: @article } if @not_image_attachments.count > 0 %>
