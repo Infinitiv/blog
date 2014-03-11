@@ -1,6 +1,6 @@
 <%= render partial: 'title' %>
 <section>
-  <% if @article.published %>
+  <% if @article.published || !current_user.nil? %>
     <%= render partial: 'twitter_card' %>
     <%= render partial: 'vk_card' %>
     <%= render partial: 'article', locals: { article: @article, dimension: "150x150" } %>

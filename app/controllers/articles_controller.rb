@@ -5,7 +5,7 @@ class ArticlesController < ApplicationController
   # GET /articles
   # GET /articles.json
   def index
-      @articles = Article.includes(:attachments).order('updated_at DESC').where(published: true).paginate(:page => params[:page])
+      @articles = current_user.nil? ? Article.includes(:attachments).order('updated_at DESC').where(published: true).paginate(:page => params[:page]) : Article.includes(:attachments).order('updated_at DESC').paginate(:page => params[:page])
   end
 
   # GET /articles/1
