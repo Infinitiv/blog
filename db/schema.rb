@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140308172119) do
+ActiveRecord::Schema.define(version: 20140311065754) do
 
   create_table "articles", force: true do |t|
     t.string   "title",      default: "",    null: false
@@ -32,6 +32,17 @@ ActiveRecord::Schema.define(version: 20140308172119) do
   end
 
   add_index "attachments", ["article_id"], name: "index_attachments_on_article_id"
+
+  create_table "comments", force: true do |t|
+    t.integer  "article_id"
+    t.text     "content"
+    t.boolean  "published",  default: false, null: false
+    t.boolean  "boolean",    default: false, null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "comments", ["article_id"], name: "index_comments_on_article_id"
 
   create_table "users", force: true do |t|
     t.string   "login",           default: "", null: false

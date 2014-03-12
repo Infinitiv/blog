@@ -7,7 +7,22 @@
   <% else %>
     <h1>Статья еще не опубликована или снята с публикации</h1>
   <% end %>
-  <%  if current_user %>
+  <div id="comments">
+  <% if @comments.count > 0 %>
+  <h2>Комментарии</h2>
+    <a name="comments"></a>
+    <%= render partial: '/comments/comment', collection: @comments, locals: { article: @article } %>
+  <% end %>
+  </div>
+  <%= form_for(@comment, :url => article_comments_path(@article), data: {remote: true}) do |f| %>
+    <div class="field">
+      <%= f.text_area :content, :rows => 3, placeholder: 'Комментарии оставлять тут...' %>
+    </div>
+    <div id="add-comment">
+      <%= f.submit "Добавить комментарий", class: 'tiny button' %>
+    </div>
+  <% end %>
+  <% if current_user %>
   <h2>Прикрепить новый файл</h2>
     <%= form_for @attachment, url: article_attachments_path(@article) do |f| %>
       <div class="filefild">
@@ -17,7 +32,7 @@
 	<%= f.file_field :file %>
       </div>
       <div class="actions">
-	<%= f.submit 'Прикрепить файл' %>
+	<%= f.submit 'Прикрепить файл', class: 'tiny button' %>
       </div>
     <% end %>
   <% end %>

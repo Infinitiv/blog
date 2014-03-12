@@ -8,6 +8,11 @@ Blog::Application.routes.draw do
   end
   
   resources :articles do
+    resources :comments do
+      member do
+	put :published_toggle
+      end
+    end
     resources :attachments do
       member do
 	get 'minify_img', :as => :minify_img

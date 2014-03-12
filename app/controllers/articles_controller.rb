@@ -18,6 +18,8 @@ class ArticlesController < ApplicationController
     @first_image_attachment = @article.attachments.select {|a| a.mime_type =~ /image/}.first
     @image_attachments = (@article.attachments.select {|a| a.mime_type =~ /image/}.count > 1 ? @article.attachments.select {|a| a.mime_type =~ /image/} : [])
     @not_image_attachments = @article.attachments.select {|a| a.mime_type !~ /image/}
+    @comment = @article.comments.new
+    @comments = current_user.nil? ? @article.comments.where.not(id: nil).where(published: true) : @article.comments.where.not(id: nil)
   end
 
   # GET /articles/new

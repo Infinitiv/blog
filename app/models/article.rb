@@ -1,5 +1,6 @@
 class Article < ActiveRecord::Base
   has_many :attachments
+  has_many :comments
   validates :title, :presence => true
   
   def first_image_attachment
