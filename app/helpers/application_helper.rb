@@ -65,6 +65,7 @@ module ApplicationHelper
     
   def sanitize_truncate(text)
     remove_youtube(text)
+    remove_garmin(text)
     truncate(Sanitize.clean(text), :length => 500, :omission => '... ', :separator => ' ')
   end
 end
