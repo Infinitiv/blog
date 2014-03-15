@@ -1,6 +1,6 @@
 <% content_for :vk_card do %>
   <meta name="title" content="<%= content_for?(:title) ? yield(:title) : "Marathon & something else" %>">
-  <meta name="description" content="<%= sanitize_truncate(@article.content) %>">
+  <meta name="description" content="<%= truncate(Sanitize.clean(@article.content), :length => 200, :omission => '... ', :separator => ' ') %>">
   <%  if @article.first_image_attachment %>
     <meta name="image" content="<%= minify_img_article_attachment_url(@article, @article.first_image_attachment) %>">
   <% end %>
