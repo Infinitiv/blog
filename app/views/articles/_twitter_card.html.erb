@@ -1,7 +1,7 @@
 <% content_for :twitter_card do %>
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:site" content="@IsmaIvanovoRu">
-  <meta name="twitter:creator" content="@IsmaIvanovoRu">
+  <meta name="twitter:site" content="http://markovnin.net">
+  <meta name="twitter:creator" content="@v_markovnin">
   <meta name="twitter:title" content="<%= content_for?(:title) ? yield(:title) : "Marathon & something else" %>">
   <meta name="twitter:description" content="<%= truncate(Sanitize.clean(@article.content), :length => 200, :omission => '... ', :separator => ' ') %>">
   <%  if @article.first_image_attachment %>
