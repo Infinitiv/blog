@@ -6,6 +6,8 @@ class ArticlesController < ApplicationController
   # GET /articles.json
   def index
       @articles = current_user.nil? ? Article.includes(:attachments).order('updated_at DESC').where(published: true).paginate(:page => params[:page]) : Article.includes(:attachments).order('updated_at DESC').paginate(:page => params[:page])
+      @ask = Ask.new
+      @asks = current_user.nil? ? Ask.order(:created_at).where.not(answer: "").limit(20).reverse : Ask.order(:created_at).limit(20).reverse
   end
 
   # GET /articles/1

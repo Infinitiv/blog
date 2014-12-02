@@ -1,0 +1,22 @@
+<article>
+  <% if current_user %>
+    <div class="right">
+      <%= link_to(edit_ask_path(ask), title: 'Ответить на вопрос') do %>
+        <i class="fi-page-edit"></i>
+      <% end %>
+      <%= link_to(ask_path(ask), confirm: 'Уверены?', method: :delete, data: {remote: true}) do %>
+	<i class="fi-x" title="Удалить"></i>
+      <% end %>
+    </div>
+  <% end %>
+<p class="text-justify clearfix">
+<%= ask.question %>
+</p>
+<p class="text-justify clearfix">
+<%= ask.answer if ask.answer %>
+</p>
+<p class=subscript>
+Оставлено здесь&nbsp;
+<%= time_tag ask.created_at, :format => :short, :pubdate => true %></p>
+</article>
+<hr />

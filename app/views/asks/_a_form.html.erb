@@ -1,0 +1,9 @@
+  <%= @ask.question %>
+  <%= form_for(@ask) do |f| %>
+    <div class="field">
+      <%= f.text_area :answer, :rows => 3, placeholder: 'Вопрос писать сюда...' %>
+    </div>
+    <div id="add-a">
+      <%= f.submit "Ответить на вопрос", class: 'tiny button' %>
+    </div>
+  <% end %>

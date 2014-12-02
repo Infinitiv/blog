@@ -42,12 +42,21 @@
       </div>
     </div>
     <div class="row">
+    <% if controller_name == 'articles' && action_name == 'index' %>
+      <div class="large-4 large-push-8 small-12 columns panel">
+	<%= render partial: "/asks/ask_me" %>
+      </div>
+      <div class="large-8 large-pull-4 small-12 columns panel">
+	<%= yield %>
+      </div>
+    <% else %>
       <div class="large-12 small-12 columns panel">
 	<%= yield %>
       </div>
+    <% end %>
     </div>
     <%= javascript_include_tag "application" %>
-    <% if action_name == 'edit' || action_name == 'new' || action_name == 'create' %>
+    <% if controller_name == 'article' && (action_name == 'edit' || action_name == 'new' || action_name == 'create') %>
       <%= javascript_include_tag "ckeditor/ckeditor" %>
       <%= javascript_include_tag "ckeditor_init" %>
     <% end %>

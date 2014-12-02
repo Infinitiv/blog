@@ -1,0 +1,3 @@
+$('#asks').html("<%=j render partial: 'asks/ask', collection: @asks %>");
+$( "<p>Спасибо за вопрос, он появится здесь после ответа на него</p>" ).insertBefore('#asks');
+$('#ask_question').val('');
