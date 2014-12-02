@@ -15,6 +15,7 @@ class AsksController < ApplicationController
   
   def create
     @ask = Ask.new(ask_params)
+    @asks = current_user.nil? ? Ask.order(:created_at).where.not(answer: "").limit(20).reverse : Ask.order(:created_at).limit(20).reverse
     respond_to do |format|
       if @ask.save
         format.html { redirect_to :back, notice: 'Question was successfully created.' }
@@ -35,7 +36,7 @@ class AsksController < ApplicationController
   
   def destroy
     @ask.destroy
-    @asks = Ask.order(:created_at).load 
+    @asks = current_user.nil? ? Ask.order(:created_at).where.not(answer: "").limit(20).reverse : Ask.order(:created_at).limit(20).reverse
     respond_to do |format|
       format.html { redirect_to :back }
       format.js
