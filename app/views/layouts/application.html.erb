@@ -56,7 +56,7 @@
     <% end %>
     </div>
     <%= javascript_include_tag "application" %>
-    <% if controller_name == 'article' && (action_name == 'edit' || action_name == 'new' || action_name == 'create') %>
+    <% if controller_name == 'articles' && (action_name == 'edit' || action_name == 'new' || action_name == 'create') %>
       <%= javascript_include_tag "ckeditor/ckeditor" %>
       <%= javascript_include_tag "ckeditor_init" %>
     <% end %>
