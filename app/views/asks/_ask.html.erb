@@ -1,6 +1,9 @@
 <article>
   <% if current_user %>
     <div class="right">
+      <%= link_to edit_ask_path(ask), title: 'Редактировать статью' do %>
+	<i class="fi-page-edit"></i>
+      <% end %>
       <%= link_to(ask_path(ask), confirm: 'Уверены?', method: :delete, data: {remote: true}) do %>
 	<i class="fi-x" title="Удалить"></i>
       <% end %>
